@@ -1,13 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap');
+@import './scss/null.scss';
 
 // Variables
-$color-text: #0F100F;
+$color-text: #0f100f;
 $color-grey--light: #f5f5f5;
 $color-grey--dark: #888888;
 $color-white: #fff;
-$color-accent: #F05959;
+$color-accent: #f05959;
 $margin-section: 100px;
 $margin-title: 30px;
+$card-shadow: 0 10px 20px 5px rgba(0, 0, 0, 0.05);
 
 html {
     scroll-behavior: smooth;
@@ -29,14 +31,36 @@ body {
 }
 
 .title {
-    
+    font-size: 25px;
+    line-height: 100%;
+    font-weight: 700;
+    margin-bottom: $margin-title;
 }
 
-@import "./scss/header.scss";
-@import "./scss/footer.scss";
-@import "./scss/404.scss";
-@import "./scss/home.scss";
-@import "./scss/category.scss";
-@import "./scss/favorites.scss";
-@import "./scss/recipe.scss";
-@import "./scss/card.scss";
+.accent-text {
+    color: $color-accent;
+}
+
+.btn {
+    padding: 10px 20px;
+    background: $color-accent;
+    color: white;
+    height: 40px;
+    width: 115px;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+    &:hover {
+        background: #f57373;
+    }
+}
+
+@import './scss/header.scss';
+@import './scss/footer.scss';
+@import './scss/404.scss';
+@import './scss/home-page.scss';
+@import './scss/categories.scss';
+@import './scss/favorites.scss';
+@import './scss/recipe.scss';
+@import './scss/card.scss';
+@import './scss/search.scss';
+@import './scss/preloader-item.scss';

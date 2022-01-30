@@ -1,0 +1,23 @@
+.notfoundpage {
+    margin: $margin-section 0;
+}
+
+.notfoundpage__title {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 120%;
+    width: 300px;
+    margin-bottom: 35px;
+}
+.notfoundpage__text {
+    font-size: 22px;
+    line-height: 150%;
+    color: #808080;
+    width: 460px;
+    font-weight: 300;
+    margin-bottom: 35px;
+}
+.notfoundpage__row {
+    display: flex;
+    justify-content: space-between;
+}

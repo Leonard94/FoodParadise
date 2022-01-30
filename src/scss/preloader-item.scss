@@ -1,0 +1,53 @@
+.preloader {
+    width: 282px;
+    height: 256px;
+    box-shadow: $card-shadow;
+    border-radius: 10px;
+    color: $color-text;
+    position: relative;
+}
+
+.preloader__top {
+    width: 100%;
+    height: 162px;
+    background: #dbdbdb;
+    border-radius: 10px 10px 0 0;
+}
+
+.preloader__bottom {
+    padding: 20px;
+    span {
+        display: block;
+        width: 100%;
+        height: 3px;
+        background: #dbdbdb;
+        border-radius: 5px;
+        margin-bottom: 15px;
+    }
+}
+
+.span-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(255, 255, 255, 0.289);
+    background: linear-gradient(90deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.3) 30%, rgba(255,255,255,0.1) 100%);
+    width: 100%;
+    height: 100%;
+    animation-name: animation;
+    animation-iteration-count: infinite;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+}
+
+@keyframes animation {
+    0% {
+        left: -150px;
+    }
+    50% {
+        left: 100%;
+    }
+    100% {
+        left: -150px;
+    }
+}
