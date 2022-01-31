@@ -13,6 +13,7 @@ $card-shadow: 0 10px 20px 5px rgba(0, 0, 0, 0.05);
 
 html {
     scroll-behavior: smooth;
+    height: 100%;
 }
 
 body {
@@ -28,6 +29,7 @@ body {
     max-width: 1248px;
     margin: 0 auto;
     padding: 0 15px;
+    height: 100%;
 }
 
 .title {
@@ -53,14 +55,22 @@ body {
         background: #f57373;
     }
 }
+.list {
+    margin-bottom: $margin-section;
+}
+
+main {
+    min-height: calc(100vh - 80px - 365px);
+}
+
 
 @import './scss/header.scss';
 @import './scss/footer.scss';
 @import './scss/404.scss';
 @import './scss/home-page.scss';
-@import './scss/categories.scss';
 @import './scss/favorites.scss';
 @import './scss/recipe.scss';
 @import './scss/card.scss';
 @import './scss/search.scss';
 @import './scss/preloader-item.scss';
+@import './scss/preloader.scss';

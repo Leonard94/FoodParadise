@@ -2,7 +2,7 @@
 export function PreloaderItem() {
     return (
         <>
-        <div className='preloader'>
+        <div className='preloader-item'>
             <span className='span-animation'></span>
             <div className='preloader__top'></div>
             <div className='preloader__bottom'>
@@ -11,7 +11,7 @@ export function PreloaderItem() {
                 <span></span>
             </div>
         </div>
-        <div className='preloader'>
+        <div className='preloader-item'>
             <span className='span-animation'></span>
             <div className='preloader__top'></div>
             <div className='preloader__bottom'>
@@ -20,7 +20,7 @@ export function PreloaderItem() {
                 <span></span>
             </div>
         </div>
-        <div className='preloader'>
+        <div className='preloader-item'>
             <span className='span-animation'></span>
             <div className='preloader__top'></div>
             <div className='preloader__bottom'>
@@ -29,7 +29,7 @@ export function PreloaderItem() {
                 <span></span>
             </div>
         </div>
-        <div className='preloader'>
+        <div className='preloader-item'>
             <span className='span-animation'></span>
             <div className='preloader__top'></div>
             <div className='preloader__bottom'>
@@ -38,7 +38,7 @@ export function PreloaderItem() {
                 <span></span>
             </div>
         </div>
-        <div className='preloader'>
+        <div className='preloader-item'>
             <span className='span-animation'></span>
             <div className='preloader__top'></div>
             <div className='preloader__bottom'>
@@ -47,7 +47,7 @@ export function PreloaderItem() {
                 <span></span>
             </div>
         </div>
-        <div className='preloader'>
+        <div className='preloader-item'>
             <span className='span-animation'></span>
             <div className='preloader__top'></div>
             <div className='preloader__bottom'>
@@ -56,7 +56,7 @@ export function PreloaderItem() {
                 <span></span>
             </div>
         </div>
-        <div className='preloader'>
+        <div className='preloader-item'>
             <span className='span-animation'></span>
             <div className='preloader__top'></div>
             <div className='preloader__bottom'>
@@ -65,7 +65,7 @@ export function PreloaderItem() {
                 <span></span>
             </div>
         </div>
-        <div className='preloader'>
+        <div className='preloader-item'>
             <span className='span-animation'></span>
             <div className='preloader__top'></div>
             <div className='preloader__bottom'>

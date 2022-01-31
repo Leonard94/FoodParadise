@@ -22,10 +22,13 @@ export function HomePage() {
                         <div className='section-categories__title title'>
                             Categories
                         </div>
-                        <NavLink to='categories/'>All Categories</NavLink>
+                        <NavLink to='categories'>All Categories</NavLink>
                     </div>
                     <div className='section-categories__inner'>
-                        <NavLink to='' className='section-categories__item'>
+                        <NavLink
+                            to='/categories/beef'
+                            className='section-categories__item'
+                        >
                             <img
                                 className='section-categories__item-img'
                                 src={noicon}
@@ -35,7 +38,10 @@ export function HomePage() {
                                 Beef
                             </span>
                         </NavLink>
-                        <NavLink to='' className='section-categories__item'>
+                        <NavLink
+                            to='/categories/chicken'
+                            className='section-categories__item'
+                        >
                             <img
                                 className='section-categories__item-img'
                                 src={noicon}
@@ -45,7 +51,10 @@ export function HomePage() {
                                 Chicken
                             </span>
                         </NavLink>
-                        <NavLink to='' className='section-categories__item'>
+                        <NavLink
+                            to='/categories/dessert'
+                            className='section-categories__item'
+                        >
                             <img
                                 className='section-categories__item-img'
                                 src={noicon}
@@ -55,7 +64,10 @@ export function HomePage() {
                                 Desserts
                             </span>
                         </NavLink>
-                        <NavLink to='' className='section-categories__item'>
+                        <NavLink
+                            to='/categories/pasta'
+                            className='section-categories__item'
+                        >
                             <img
                                 className='section-categories__item-img'
                                 src={noicon}
@@ -65,7 +77,10 @@ export function HomePage() {
                                 Pasta
                             </span>
                         </NavLink>
-                        <NavLink to='' className='section-categories__item'>
+                        <NavLink
+                            to='/categories/pork'
+                            className='section-categories__item'
+                        >
                             <img
                                 className='section-categories__item-img'
                                 src={noicon}
@@ -75,14 +90,17 @@ export function HomePage() {
                                 Pork
                             </span>
                         </NavLink>
-                        <NavLink to='' className='section-categories__item'>
+                        <NavLink
+                            to='/categories/vegan'
+                            className='section-categories__item'
+                        >
                             <img
                                 className='section-categories__item-img'
                                 src={noicon}
                                 alt='noicon'
                             />
                             <span className='section-categories__item-title'>
-                                Meat
+                                Vegan
                             </span>
                         </NavLink>
                     </div>
@@ -95,8 +113,11 @@ export function HomePage() {
                     </div>
                     <div className='section-recipes__inner'>
                         <Link to='' className='section-recipes__item'>
-                            <img src={noicon} alt='777777' />
-                            <span>Recipe Title</span>
+                            <img
+                                src='https://www.themealdb.com/images/media/meals/syqypv1486981727.jpg'
+                                alt='Chicken Alfredo Primavera'
+                            />
+                            <span>Chicken Alfredo Primavera</span>
                         </Link>
                         <Link to='' className='section-recipes__item'>
                             <img src={noicon} alt='777777' />

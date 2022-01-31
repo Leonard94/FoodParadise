@@ -6,18 +6,27 @@
 
 .card {
     width: 282px;
-    height: 256px;
     box-shadow: $card-shadow;
     border-radius: 10px;
     transition: all 0.3s ease;
     cursor: pointer;
     color: $color-text;
-    
+    padding: 20px;
+
     &:hover {
         transform: translateY(-5px);
     }
 }
 
 .card__title {
-    padding: 20px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.card__img {
+    img {
+        object-fit: cover;
+        border-radius: 7px;
+        width: 242px;
+    }
 }
