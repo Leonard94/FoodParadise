@@ -1,0 +1,47 @@
+.card-recipe {
+    width: 282px;
+    box-shadow: $card-shadow;
+    border-radius: 10px;
+    color: $color-text;
+    padding: 20px;
+    position: relative;
+}
+
+.card-recipe__title {
+    transition: all 0.3s ease;
+    text-align: center;
+    margin-top: 20px;
+    color: $color-text;
+    &:hover {
+        color: $color-accent;
+    }
+}
+
+.card-recipe__img {
+    img {
+        transition: all 0.3s ease;
+        object-fit: cover;
+        border-radius: 7px;
+        width: 242px;
+        &:hover {
+            transform: translateY(-5px);
+        }
+    }
+}
+
+.card-recipe__add-remove {
+    position: absolute;
+    bottom: 20px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    transition: all 0.15s ease;
+    z-index: 2;
+    cursor: pointer;
+    &:hover {
+        transform: scale(1.1);
+    }
+    &:active {
+        transform: scale(0.9);
+    }
+}

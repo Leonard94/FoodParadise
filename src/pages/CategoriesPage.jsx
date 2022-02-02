@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Card } from '../components/Card'
+import { CardCategory } from '../components/CardCategory'
 import { PreloaderItem } from '../components/PreloaderItem'
 import { getAllCategories } from '../api'
 
@@ -19,7 +19,7 @@ export function CategoriesPage() {
                             <PreloaderItem />
                         ) : (
                             categories.map((category) => (
-                                <Card
+                                <CardCategory
                                     key={category.idCategory}
                                     image={category.strCategoryThumb}
                                     name={category.strCategory}

@@ -6,18 +6,36 @@ import { Preloader } from './Preloader'
 export function Recipe() {
     const { recipe } = useParams()
     const [detailRecipe, setDetailRecipe] = useState([])
-    useEffect(() => {
-        getRecipe(recipe).then((data) => setDetailRecipe(data.meals[0]))
-    }, [])
 
-    const {
-        strMeal: name,
-        strVategory: category,
-        strArea: area,
-        strInstructions: instructions,
-        strMealThumb: image,
-        strYoutube: video,
-    } = detailRecipe
+    useEffect(() => {
+        getRecipe(recipe).then((data) => {
+            const extractDetailRecipe = extractRecipe(data.meals[0])
+            setDetailRecipe(extractDetailRecipe)
+        })
+    }, [recipe])
+
+    function extractRecipe(meal) {
+        const newMeal = {
+            name: meal.strMeal,
+            instructions: meal.strInstructions,
+            category: meal.strCategory,
+            area: meal.strArea,
+            image: meal.strMealThumb,
+            video: meal.strYoutube,
+        }
+
+        Object.keys(meal)
+            .filter((key) => key.substring(0, 13) === 'strIngredient')
+            .reduce(
+                (ingredients, ingredient) => ingredients.concat(ingredient),
+                []
+            )
+            .forEach((key, index) => {
+                let ingIndex = index + 1
+                newMeal[meal[key]] = meal[`strMeasure${ingIndex}`]
+            })
+        return newMeal
+    }
 
     return (
         <>
@@ -26,29 +44,27 @@ export function Recipe() {
             ) : (
                 <section className='recipe'>
                     <div className='container'>
-                        <h1 className='title'>{name}</h1>
+                        <h1 className='title'>{detailRecipe.name}</h1>
                         <div className='recipe__row'>
-                            <img src={image} alt='' />
+                            <img src={detailRecipe.image} alt='' />
                             <div className='recipe__ingredients'>
                                 <h3 className='recipe__title'>Ingredients:</h3>
                                 <ul>
-                                    <li>Olive Oil x 1kg</li>
-                                    <li>Garlic x 1kg</li>
-                                    <li>Bacon x 1kg</li>
-                                    <li>Stout x 1kg</li>
-                                    <li>Corn Flour x 1kg</li>
+
                                 </ul>
+                                <h6>Area: {detailRecipe.area}</h6>
+                                <h6>Category: {detailRecipe.category}</h6>
                             </div>
                         </div>
 
                         <div className='recipe__instructions'>
                             <h3 className='recipe__title'>Instructions:</h3>
-                            <p>{instructions}</p>
+                            <p>{detailRecipe.instructions}</p>
                         </div>
-                        {video ? (
+                        {detailRecipe.video ? (
                             <iframe
-                                title={name}
-                                src={`https://www.youtube.com/embed/${video.slice(
+                                title={detailRecipe.name}
+                                src={`https://www.youtube.com/embed/${detailRecipe.video.slice(
                                     -11
                                 )}`}
                                 allowFullScreen

@@ -64,13 +64,16 @@ main {
 }
 
 
+
 @import './scss/header.scss';
 @import './scss/footer.scss';
 @import './scss/404.scss';
 @import './scss/home-page.scss';
 @import './scss/favorites.scss';
-@import './scss/recipe.scss';
 @import './scss/card.scss';
+@import './scss/card-category.scss';
+@import './scss/card-recipe.scss';
+@import './scss/recipe.scss';
 @import './scss/search.scss';
 @import './scss/preloader-item.scss';
 @import './scss/preloader.scss';
