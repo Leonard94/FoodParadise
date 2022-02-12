@@ -3,14 +3,34 @@ import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { CardRecipe } from '../components/CardRecipe'
 import { getAllRecipesOfCategory } from '../api'
+import { GoBackBtn } from '../components/GoBackBtn'
 
-export function RecipesPage({ addToFavorites, removeFromFavorites }) {
+export function RecipesPage({
+    favorites,
+    addToFavorites,
+    removeFromFavorites,
+}) {
     const { category } = useParams()
     const [recipes, setRecipes] = useState([])
 
     useEffect(() => {
-        getAllRecipesOfCategory(category).then((data) => setRecipes(data.meals))
-    }, [category])
+        getAllRecipesOfCategory(category).then((data) => {
+            let newData = whichIsFavoriteItem(data.meals)
+            setRecipes(newData)
+        })
+    }, [category, favorites])
+
+    function whichIsFavoriteItem(arr) {
+        favorites.forEach((favorite) => {
+            let index = arr.findIndex(
+                (recipe) => favorite.name === recipe.strMeal
+            )
+            if (index >= 0) {
+                arr[index].isFavorite = true
+            }
+        })
+        return arr
+    }
 
     return (
         <div>
@@ -28,13 +48,16 @@ export function RecipesPage({ addToFavorites, removeFromFavorites }) {
                                     key={resipe.idMeal}
                                     image={resipe.strMealThumb}
                                     name={resipe.strMeal}
-                                    isFavorite={false}
+                                    isFavorite={
+                                        resipe.isFavorite ? true : false
+                                    }
                                     addToFavorites={addToFavorites}
                                     removeFromFavorites={removeFromFavorites}
                                 />
                             ))
                         )}
                     </div>
+                    <GoBackBtn />
                 </div>
             </section>
         </div>

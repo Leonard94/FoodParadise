@@ -62,23 +62,23 @@ export function Footer() {
                         </div>
                         <ul className='footer__column-list'>
                             <li>
-                                <NavLink to='/categories/beef'>Beef</NavLink>
+                                <NavLink to='recipe/Chicken Alfredo Primavera'>Primavera</NavLink>
                             </li>
                             <li>
-                                <NavLink to='/categories/chicken'>
-                                    Chicken
+                                <NavLink to='recipe/spaghetti alla carbonara'>
+                                    Carbonara
                                 </NavLink>
                             </li>
                             <li>
-                                <NavLink to='/categories/desserts'>
-                                    Desserts
+                                <NavLink to='recipe/cream cheese tart'>
+                                Cream Cheese
                                 </NavLink>
                             </li>
                             <li>
-                                <NavLink to='/categories/pasta'>Pasta </NavLink>
+                                <NavLink to='recipe/choc chip pecan pie'>Choc Chip Pecan Pie </NavLink>
                             </li>
                             <li>
-                                <NavLink to='/categories/pork'>Pork </NavLink>
+                                <NavLink to='recipe/pizza express margherita'>Pizza margherita </NavLink>
                             </li>
                         </ul>
                     </div>

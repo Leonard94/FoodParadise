@@ -28,7 +28,6 @@ export function App() {
     }
 
     const addToFavorites = (obj) => {
-        console.log('Пришёл такой объект для добавления в Favorites =>>', obj)
         if (
             (favorites.find((item) => item.name === obj.name) && true) ||
             false

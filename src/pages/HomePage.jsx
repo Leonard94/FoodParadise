@@ -1,7 +1,12 @@
 import { Search } from '../components/Search'
 import { NavLink } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import noicon from '../assets/img/icon__noicon.png'
+import iconPork from '../assets/img/icon__pork.svg'
+import iconBeef from '../assets/img/icon__beef.svg'
+import iconChicken from '../assets/img/icon__chicken.svg'
+import iconDessert from '../assets/img/icon__dessert.svg'
+import iconPasta from '../assets/img/icon__pasta.svg'
+import iconVegan from '../assets/img/icon__vegan.svg'
 
 export function HomePage() {
     return (
@@ -26,12 +31,12 @@ export function HomePage() {
                     </div>
                     <div className='section-categories__inner'>
                         <NavLink
-                            to='/categories/beef'
+                            to='/category/beef'
                             className='section-categories__item'
                         >
                             <img
                                 className='section-categories__item-img'
-                                src={noicon}
+                                src={iconBeef}
                                 alt='noicon'
                             />
                             <span className='section-categories__item-title'>
@@ -39,12 +44,12 @@ export function HomePage() {
                             </span>
                         </NavLink>
                         <NavLink
-                            to='/categories/chicken'
+                            to='/category/chicken'
                             className='section-categories__item'
                         >
                             <img
                                 className='section-categories__item-img'
-                                src={noicon}
+                                src={iconChicken}
                                 alt='noicon'
                             />
                             <span className='section-categories__item-title'>
@@ -52,12 +57,12 @@ export function HomePage() {
                             </span>
                         </NavLink>
                         <NavLink
-                            to='/categories/dessert'
+                            to='/category/dessert'
                             className='section-categories__item'
                         >
                             <img
                                 className='section-categories__item-img'
-                                src={noicon}
+                                src={iconDessert}
                                 alt='noicon'
                             />
                             <span className='section-categories__item-title'>
@@ -65,12 +70,12 @@ export function HomePage() {
                             </span>
                         </NavLink>
                         <NavLink
-                            to='/categories/pasta'
+                            to='/category/pasta'
                             className='section-categories__item'
                         >
                             <img
                                 className='section-categories__item-img'
-                                src={noicon}
+                                src={iconPasta}
                                 alt='noicon'
                             />
                             <span className='section-categories__item-title'>
@@ -78,12 +83,12 @@ export function HomePage() {
                             </span>
                         </NavLink>
                         <NavLink
-                            to='/categories/pork'
+                            to='/category/pork'
                             className='section-categories__item'
                         >
                             <img
                                 className='section-categories__item-img'
-                                src={noicon}
+                                src={iconPork}
                                 alt='noicon'
                             />
                             <span className='section-categories__item-title'>
@@ -91,12 +96,12 @@ export function HomePage() {
                             </span>
                         </NavLink>
                         <NavLink
-                            to='/categories/vegan'
+                            to='/category/vegan'
                             className='section-categories__item'
                         >
                             <img
                                 className='section-categories__item-img'
-                                src={noicon}
+                                src={iconVegan}
                                 alt='noicon'
                             />
                             <span className='section-categories__item-title'>
@@ -112,28 +117,55 @@ export function HomePage() {
                         Recipe Of The Month
                     </div>
                     <div className='section-recipes__inner'>
-                        <Link to='' className='section-recipes__item'>
+                        <Link
+                            to='recipe/Chicken Alfredo Primavera'
+                            className='section-recipes__item'
+                        >
                             <img
                                 src='https://www.themealdb.com/images/media/meals/syqypv1486981727.jpg'
                                 alt='Chicken Alfredo Primavera'
                             />
                             <span>Chicken Alfredo Primavera</span>
                         </Link>
-                        <Link to='' className='section-recipes__item'>
-                            <img src={noicon} alt='777777' />
-                            <span>Recipe Title</span>
+                        <Link
+                            to='recipe/spaghetti alla carbonara'
+                            className='section-recipes__item'
+                        >
+                            <img
+                                src='https://www.themealdb.com/images/media/meals/llcbn01574260722.jpg'
+                                alt='Spaghetti alla Carbonara'
+                            />
+                            <span>Spaghetti alla Carbonara</span>
                         </Link>
-                        <Link to='' className='section-recipes__item'>
-                            <img src={noicon} alt='777777' />
-                            <span>Recipe Title</span>
+                        <Link
+                            to='recipe/cream cheese tart'
+                            className='section-recipes__item'
+                        >
+                            <img
+                                src='https://www.themealdb.com/images/media/meals/wurrux1468416624.jpg'
+                                alt='Cream Cheese Tart'
+                            />
+                            <span>Cream Cheese Tart</span>
                         </Link>
-                        <Link to='' className='section-recipes__item'>
-                            <img src={noicon} alt='777777' />
-                            <span>Recipe Title</span>
+                        <Link
+                            to='recipe/choc chip pecan pie'
+                            className='section-recipes__item'
+                        >
+                            <img
+                                src='https://www.themealdb.com/images/media/meals/rqvwxt1511384809.jpg'
+                                alt='Choc Chip Pecan Pie'
+                            />
+                            <span>Choc Chip Pecan Pie</span>
                         </Link>
-                        <Link to='' className='section-recipes__item'>
-                            <img src={noicon} alt='777777' />
-                            <span>Recipe Title</span>
+                        <Link
+                            to='recipe/pizza express margherita'
+                            className='section-recipes__item'
+                        >
+                            <img
+                                src='https://www.themealdb.com/images/media/meals/x0lk931587671540.jpg'
+                                alt='Pizza Express Margherita'
+                            />
+                            <span>Pizza Express Margherita</span>
                         </Link>
                     </div>
                 </div>
