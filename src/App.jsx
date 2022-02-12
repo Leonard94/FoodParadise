@@ -2,7 +2,7 @@ import { Header } from './components/Header'
 import { Footer } from './components/Footer'
 import { HomePage } from './pages/HomePage'
 import { RecipesPage } from './pages/RecipesPage'
-import { Recipe } from './components/Recipe'
+import { RecipePage } from './pages/RecipePage'
 import { CategoriesPage } from './pages/CategoriesPage'
 import { FavoritesPage } from './pages/FavoritesPage'
 import { NotFoundPage } from './pages/NotFoundPage'
@@ -62,7 +62,7 @@ export function App() {
                             />
                         }
                     />
-                    <Route path='/recipe/:recipe' element={<Recipe />} />
+                    <Route path='/recipe/:recipe' element={<RecipePage />} />
                     <Route
                         path='/favorites'
                         element={

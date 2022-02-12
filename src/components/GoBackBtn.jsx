@@ -1,3 +1,15 @@
+import { useNavigate } from 'react-router-dom'
+
 export function GoBackBtn() {
-    return <button className='btn btn-goback'>Go Back</button>
+    const navigate = useNavigate()
+
+    function goBack() {
+        navigate(-1)
+    }
+
+    return (
+        <button className='btn btn-goback' onClick={goBack}>
+            Go Back
+        </button>
+    )
 }
