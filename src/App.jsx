@@ -32,7 +32,7 @@ export function App() {
             (favorites.find((item) => item.name === obj.name) && true) ||
             false
         ) {
-            console.log('Такой объект есть, ничего не добавляем')
+            console.log('Такой объект уже есть, ничего не добавляем')
         } else {
             setFavorites([...favorites, obj])
         }
@@ -49,7 +49,15 @@ export function App() {
             <Header />
             <main>
                 <Routes>
-                    <Route path='/' element={<HomePage />} />
+                    <Route
+                        path='/'
+                        element={
+                            <HomePage
+                                addToFavorites={addToFavorites}
+                                removeFromFavorites={removeFromFavorites}
+                            />
+                        }
+                    />
                     <Route path='/categories' element={<CategoriesPage />} />
                     <Route
                         path='/category/:category'

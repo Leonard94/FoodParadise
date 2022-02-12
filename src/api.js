@@ -15,3 +15,8 @@ export const getRecipe = async (name) => {
     const resp = await fetch(`${BASE_URL}search.php?s=${name}`)
     return await resp.json()
 }
+
+export const getSearchResults = async (str) => {
+    const resp = await fetch(`${BASE_URL}search.php?s=${str}`)
+    return await resp.json()
+}

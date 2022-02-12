@@ -1,6 +1,9 @@
 import { Search } from '../components/Search'
 import { NavLink } from 'react-router-dom'
 import { Link } from 'react-router-dom'
+import { getSearchResults } from '../api'
+import { useState, useEffect } from 'react'
+import { CardRecipe } from '../components/CardRecipe'
 import iconPork from '../assets/img/icon__pork.svg'
 import iconBeef from '../assets/img/icon__beef.svg'
 import iconChicken from '../assets/img/icon__chicken.svg'
@@ -8,7 +11,17 @@ import iconDessert from '../assets/img/icon__dessert.svg'
 import iconPasta from '../assets/img/icon__pasta.svg'
 import iconVegan from '../assets/img/icon__vegan.svg'
 
-export function HomePage() {
+export function HomePage(props) {
+    const [search, setSearch] = useState('')
+    const [searchResult, setSearchResult] = useState([])
+
+    useEffect(() => {
+        if (search === '') {
+        } else {
+            getSearchResults(search).then((data) => setSearchResult(data.meals))
+        }
+    }, [search])
+
     return (
         <>
             <section className='banner'>
@@ -17,10 +30,67 @@ export function HomePage() {
                         <div className='banner__title'>
                             The Resipe Of Food Paradise!
                         </div>
-                        <Search />
+                        <Search setSearch={setSearch} />
                     </div>
                 </div>
             </section>
+
+            {searchResult === null ? (
+                <div className='container'>
+                    <h2 className='title title-search'>No results found for '{search}'</h2>
+                </div>
+            ) : !searchResult.length ? null : (
+                <section className='search'>
+                    <div className='container'>
+                        <div className='title'>Results for '{search}'</div>
+                        <div className='card__row card__search'>
+                            {searchResult.map((resipe) => (
+                                <CardRecipe
+                                    key={resipe.idMeal}
+                                    image={resipe.strMealThumb}
+                                    name={resipe.strMeal}
+                                    isFavorite={
+                                        resipe.isFavorite ? true : false
+                                    }
+                                    addToFavorites={props.addToFavorites}
+                                    removeFromFavorites={
+                                        props.removeFromFavorites
+                                    }
+                                />
+                            ))}
+                        </div>
+                    </div>
+                </section>
+            )}
+
+            {/* {!searchResult.length ? null : (
+                <section className='search'>
+                    <div className='container'>
+                        <div className='title'>Results for {search}</div>
+                        <div className='list__inner card__row'>
+                            {searchResult === null ? (
+                                <h1>Упс, ничего не найдено!</h1>
+                            ) : (
+                                searchResult.map((resipe) => (
+                                    <CardRecipe
+                                        key={resipe.idMeal}
+                                        image={resipe.strMealThumb}
+                                        name={resipe.strMeal}
+                                        isFavorite={
+                                            resipe.isFavorite ? true : false
+                                        }
+                                        addToFavorites={props.addToFavorites}
+                                        removeFromFavorites={
+                                            props.removeFromFavorites
+                                        }
+                                    />
+                                ))
+                            )}
+                        </div>
+                    </div>
+                </section>
+            )} */}
+
             <section className='section-categories'>
                 <div className='container'>
                     <div className='section-categories__title-row'>
