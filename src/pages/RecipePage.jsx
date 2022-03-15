@@ -10,6 +10,7 @@ export function RecipePage() {
     const [detailRecipe, setDetailRecipe] = useState([])
 
     useEffect(() => {
+        window.scrollTo(0, 0)
         getRecipe(recipe).then((data) => {
             setDetailRecipe(data.meals[0])
         })

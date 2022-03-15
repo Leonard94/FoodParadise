@@ -16,8 +16,7 @@ export function HomePage(props) {
     const [searchResult, setSearchResult] = useState([])
 
     useEffect(() => {
-        if (search === '') {
-        } else {
+        if (search !== '') {
             getSearchResults(search).then((data) => setSearchResult(data.meals))
         }
     }, [search])
@@ -62,34 +61,6 @@ export function HomePage(props) {
                     </div>
                 </section>
             )}
-
-            {/* {!searchResult.length ? null : (
-                <section className='search'>
-                    <div className='container'>
-                        <div className='title'>Results for {search}</div>
-                        <div className='list__inner card__row'>
-                            {searchResult === null ? (
-                                <h1>Упс, ничего не найдено!</h1>
-                            ) : (
-                                searchResult.map((resipe) => (
-                                    <CardRecipe
-                                        key={resipe.idMeal}
-                                        image={resipe.strMealThumb}
-                                        name={resipe.strMeal}
-                                        isFavorite={
-                                            resipe.isFavorite ? true : false
-                                        }
-                                        addToFavorites={props.addToFavorites}
-                                        removeFromFavorites={
-                                            props.removeFromFavorites
-                                        }
-                                    />
-                                ))
-                            )}
-                        </div>
-                    </div>
-                </section>
-            )} */}
 
             <section className='section-categories'>
                 <div className='container'>
