@@ -1,65 +1,60 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { getRecipe } from '../api'
+import { useDispatch, useSelector } from 'react-redux'
+
+import { loadingRecipe } from '../store/recipe/recipe-actions'
+import {
+    selectRecipeInfo,
+    selectRecipe,
+} from '../store/recipe/recipe-selectors'
+
 import { Preloader } from '../components/Preloader'
-import { Ingredients } from '../components/Ingredients'
-import { GoBackBtn } from '../components/GoBackBtn'
+import { Recipe } from '../components/Recipe'
+import { selectFavorites } from '../store/recipes/recipes-selectors'
+import {
+    addToFavorites,
+    removeFromFavorites,
+} from '../store/recipes/recipes-actions'
 
 export function RecipePage() {
     const { recipe } = useParams()
-    const [detailRecipe, setDetailRecipe] = useState([])
+    const { error, status } = useSelector(selectRecipeInfo)
+    const detailRecipe = useSelector(selectRecipe)
+    const favorites = useSelector(selectFavorites)
+
+    const dispatch = useDispatch()
 
     useEffect(() => {
         window.scrollTo(0, 0)
-        getRecipe(recipe).then((data) => {
-            setDetailRecipe(data.meals[0])
-        })
-    }, [recipe])
+        dispatch(loadingRecipe(recipe))
+    }, [recipe, dispatch])
 
-    const {
-        strMeal: name,
-        strCategory: category,
-        strArea: area,
-        strInstructions: instructions,
-        strMealThumb: image,
-        strYoutube: video,
-    } = detailRecipe
+    const checkIsFavorite = () => {
+        const theRecipeIsFavorite = favorites.some(
+            (favorite) => favorite.name === detailRecipe.strMeal
+        )
+        return theRecipeIsFavorite
+    }
+
+    const addFavorite = (obj) => {
+        dispatch(addToFavorites(obj))
+    }
+
+    const removeFavorite = (name) => {
+        dispatch(removeFromFavorites(name))
+    }
 
     return (
         <>
-            {detailRecipe.length ? (
-                <Preloader />
-            ) : (
-                <section className='recipe'>
-                    <div className='container'>
-                        <h1 className='title'>{name}</h1>
-                        <div className='recipe__row'>
-                            <img src={image} alt={name} />
-                            <div className='recipe__ingredients'>
-                                <h3 className='recipe__title'>Ingredients:</h3>
-                                <Ingredients detailRecipe={detailRecipe} />
-                            </div>
-                        </div>
-
-                        <div className='recipe__instructions'>
-                            <h3 className='recipe__title'>Instructions:</h3>
-                            <p>{instructions}</p>
-                        </div>
-                        {video ? (
-                            <iframe
-                                title={name}
-                                src={`https://www.youtube.com/embed/${video.slice(
-                                    -11
-                                )}`}
-                                allowFullScreen
-                            />
-                        ) : null}
-                        <h6>Category: {category}</h6>
-                        <h6>Area: {area}</h6>
-                        <br />
-                        <GoBackBtn />
-                    </div>
-                </section>
+            {error && <h2>Error: {error}</h2>}
+            {status === 'loading' && <Preloader />}
+            {status === 'recived' && (
+                <Recipe
+                    detailRecipe={detailRecipe}
+                    isFavorite={checkIsFavorite()}
+                    addFavorite={addFavorite}
+                    removeFavorite={removeFavorite}
+                />
             )}
         </>
     )

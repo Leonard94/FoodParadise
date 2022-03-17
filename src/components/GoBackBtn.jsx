@@ -8,7 +8,7 @@ export function GoBackBtn() {
     }
 
     return (
-        <button className='btn btn-goback' onClick={goBack}>
+        <button className='btn btn__back' onClick={goBack}>
             Go Back
         </button>
     )

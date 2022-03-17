@@ -3,12 +3,11 @@ import heartFill from '../assets/img/icon__heart--fill.png'
 import heartStroke from '../assets/img/icon__heart--stroke.png'
 
 export function CardRecipe(props) {
-
     const {
         image,
         name,
         isFavorite = false,
-        addToFavorites,
+        addFavorite,
         removeFromFavorites,
     } = props
 
@@ -20,9 +19,13 @@ export function CardRecipe(props) {
                 onClick={
                     isFavorite
                         ? () => removeFromFavorites(name)
-                        : () => addToFavorites({ image, name })
+                        : () => addFavorite({ image, name })
                 }
-                alt='add to favorite icon'
+                alt={`${
+                    isFavorite
+                        ? 'remove from favorite icon'
+                        : 'add to favorite icon'
+                }`}
             />
             <NavLink
                 to={`/recipe/${name.toLowerCase()}`}

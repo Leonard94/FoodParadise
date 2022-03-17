@@ -44,18 +44,33 @@ body {
 }
 
 .btn {
-    margin-top: 40px;
     padding: 10px 20px;
-    background: $color-accent;
-    color: white;
     height: 40px;
-    width: 115px;
     transition: all 0.3s ease;
     border-radius: 5px;
+    background: $color-accent;
+    color: white;
     &:hover {
         background: #f57373;
     }
 }
+
+.btn__back {
+    margin-top: 40px;
+    width: 115px;
+}
+.btn__favorite {
+    margin-left: 40px;
+}
+.btn__favorite--true {
+    background: white;
+    border: 1px solid $color-accent;
+    color: $color-accent;
+    &:hover {
+        color: white;
+    }
+}
+
 .list {
     margin-bottom: $margin-section;
 }
@@ -63,8 +78,6 @@ body {
 main {
     min-height: calc(100vh - 80px - 365px);
 }
-
-
 
 @import './scss/header.scss';
 @import './scss/footer.scss';

@@ -1,35 +1,35 @@
-import { PreloaderItem } from '../components/PreloaderItem'
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+
+import { PreloaderItem } from '../components/PreloaderItem'
 import { CardRecipe } from '../components/CardRecipe'
-import { getAllRecipesOfCategory } from '../api'
 import { GoBackBtn } from '../components/GoBackBtn'
 
-export function RecipesPage({
-    favorites,
+import { loadingRecipes } from '../store/recipes/recipes-actions'
+import {
     addToFavorites,
     removeFromFavorites,
-}) {
+} from '../store/recipes/recipes-actions'
+import { selectRecipesInfo, selectAllRecipes } from '../store/recipes/recipes-selectors'
+
+export function RecipesPage() {
     const { category } = useParams()
-    const [recipes, setRecipes] = useState([])
+    const dispatch = useDispatch()
+
+    const { error, status } = useSelector(selectRecipesInfo)
+    const recipes = useSelector(selectAllRecipes)
 
     useEffect(() => {
-        getAllRecipesOfCategory(category).then((data) => {
-            let newData = whichIsFavoriteItem(data.meals)
-            setRecipes(newData)
-        })
-    }, [category, favorites])
+        dispatch(loadingRecipes(category))
+    }, [category, dispatch])
 
-    function whichIsFavoriteItem(arr) {
-        favorites.forEach((favorite) => {
-            let index = arr.findIndex(
-                (recipe) => favorite.name === recipe.strMeal
-            )
-            if (index >= 0) {
-                arr[index].isFavorite = true
-            }
-        })
-        return arr
+    const addFavorite = (obj) => {
+        dispatch(addToFavorites(obj))
+    }
+
+    const removeFavorite = (name) => {
+        dispatch(removeFromFavorites(name))
     }
 
     return (
@@ -40,22 +40,22 @@ export function RecipesPage({
                         {category[0].toUpperCase() + category.slice(1)} recipes
                     </h1>
                     <div className='list__inner card__row'>
-                        {!recipes.length ? (
-                            <PreloaderItem />
-                        ) : (
-                            recipes.map((resipe) => (
-                                <CardRecipe
-                                    key={resipe.idMeal}
-                                    image={resipe.strMealThumb}
-                                    name={resipe.strMeal}
-                                    isFavorite={
-                                        resipe.isFavorite ? true : false
-                                    }
-                                    addToFavorites={addToFavorites}
-                                    removeFromFavorites={removeFromFavorites}
-                                />
-                            ))
-                        )}
+                        {error && <h2>Error!!!</h2>}
+                        {status === 'loading' && <PreloaderItem />}
+                        {status === 'rejected' && <h2>Попробуйте позже</h2>}
+                        {status === 'recived' &&
+                            recipes.map((recipe) => {
+                                return (
+                                    <CardRecipe
+                                        key={recipe.idMeal}
+                                        image={recipe.strMealThumb}
+                                        name={recipe.strMeal}
+                                        isFavorite={recipe.isFavorite}
+                                        removeFromFavorites={removeFavorite}
+                                        addFavorite={addFavorite}
+                                    />
+                                )
+                            })}
                     </div>
                     <GoBackBtn />
                 </div>
