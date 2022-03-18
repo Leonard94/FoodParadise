@@ -16,7 +16,6 @@ import {
     addToFavorites,
     removeFromFavorites,
 } from '../store/recipes/recipes-actions'
-import { Preloader } from './Preloader'
 
 export function Search() {
     const [value, setValue] = useState('')

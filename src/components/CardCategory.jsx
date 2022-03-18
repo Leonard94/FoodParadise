@@ -1,4 +1,3 @@
-import nophoto from '../assets/img/icon__nophoto.png'
 import { NavLink } from 'react-router-dom'
 
 export function CardCategory({ image, name }) {

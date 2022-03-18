@@ -9,7 +9,6 @@ import { FavoritesPage } from './pages/FavoritesPage'
 import { NotFoundPage } from './pages/NotFoundPage'
 
 import { Routes, Route } from 'react-router-dom'
-import { useState, useEffect } from 'react'
 
 export function App() {
 

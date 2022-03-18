@@ -19,7 +19,7 @@ export function CategoriesPage() {
         if (!qty) {
             dispatch(loadCategories())
         }
-    }, [qty])
+    }, [qty, dispatch])
 
     return (
         <>
