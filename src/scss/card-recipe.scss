@@ -18,12 +18,22 @@
 }
 
 .card-recipe__img {
+    .test {
+        width: 242px;
+        height: 242px;
+        background: $color-grey--light;
+        transition: all 0.3s ease;
+        border-radius: 7px;
+        &:hover {
+            transform: translateY(-5px);
+        }
+    }
     img {
         transition: all 0.3s ease;
         object-fit: cover;
         border-radius: 7px;
         width: 242px;
-        &:hover {
+        &:hover .test {
             transform: translateY(-5px);
         }
     }

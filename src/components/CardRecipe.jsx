@@ -31,7 +31,9 @@ export function CardRecipe(props) {
                 to={`/recipe/${name.toLowerCase()}`}
                 className='card-recipe__img'
             >
-                <img src={image} alt={`${name}`} />
+                <div className='test'>
+                    <img src={image} alt={`${name}`} />
+                </div>
                 <div className='card-recipe__title'>{name}</div>
             </NavLink>
         </div>
